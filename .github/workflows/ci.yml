@@ -21,7 +21,7 @@ jobs:
       - name: Run tests
         run: go test -cover ./...
   style:
-    name: style
+    name: Style
     runs-on: ubuntu-latest
 
     steps:
@@ -35,3 +35,9 @@ jobs:
 
       - name: Format go code
         run: test -z $(go fmt ./...)
+
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Lint Check
+        run: staticcheck ./...
