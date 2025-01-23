@@ -39,4 +39,4 @@ jobs:
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/ferrous-beaker-448707-f5/notely-ar-repo/notely:latest .
 
       - name: Deploy to Cloud Run
-        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/ferrous-beaker-448707-f5/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project notely --max-instances=4
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/ferrous-beaker-448707-f5/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project ferrous-beaker-448707-f5 --max-instances=4
