@@ -20,3 +20,17 @@ jobs:
 
       - name: Build production binary
         run: scripts/buildprod.sh
+
+      - id: "auth"
+        uses: "google-github-actions/auth@v2"
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v2"
+
+      - name: "Use gcloud CLI"
+        run: "gcloud info"
+
+      - name: Push docker image to Google Artifact Registry
+        run: gcloud builds submit --tag europe-southwest1-docker.pkg.dev/ferrous-beaker-448707-f5/notely-ar-repo/notely:latest .
